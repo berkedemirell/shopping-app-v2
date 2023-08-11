@@ -75,6 +75,8 @@ export default {
         'ssm': {'max': '560px'},
         'xs': {'max': '485px'},
         'xxs': {'max': '430px'},
+        'xxxs': {'max': '355px'},
+        'final': {'max': '325px'},
       }
     },
   },

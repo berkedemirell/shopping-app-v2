@@ -12,7 +12,7 @@ const Cart = (props) => {
     props.setIsAcc(false)
   }
   return (
-    <div className="absolute -left-44 border ssm:w-cart2 z-10 border-slate-200 p-4 ssm:p-2 w-cart bg-indigo-200 text-sky-800 rounded-lg text-sm">
+    <div className="absolute -left-44 border top-10 ssm:w-cart2 z-10 border-slate-200 p-4 ssm:p-2 w-cart bg-indigo-200 text-sky-800 rounded-lg text-sm">
       {cart?.length === 0
         ? "There is no any product in your cart."
         : cart?.map((pro, i) => {

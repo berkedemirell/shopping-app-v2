@@ -91,7 +91,7 @@ const Purchase = () => {
           return (
             <div key={i}>
               <div className="flex flex-row items-center gap-12 mb-2 xxs:gap-6 p-2 border-b border-slate-400">
-                <div className="text-lg font-bold xxs:text-xs">{i + 1}.</div>
+                <div className="text-lg font-bold xxs:text-xs xxxs:hidden">{i + 1}.</div>
                 <div className="ssm:hidden">
                   <img
                     src={c.thumbnail}
@@ -151,7 +151,7 @@ const Purchase = () => {
               type="text"
               name="cardHolder"
               id="name"
-              className="w-cart h-8 border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
+              className="w-cart xxs:w-cart2 h-8 xxs:text-sm  border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
               placeholder="Name on the Card"
               onChange={handleChange}
             />
@@ -167,7 +167,7 @@ const Purchase = () => {
               type="number"
               name="cardNumber"
               id="card-number"
-              className="w-cart h-8 border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
+              className="w-cart h-8 xxs:w-cart2 xxs:text-sm  border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
               placeholder="Card Number"
               onChange={handleChange}
             />
@@ -183,7 +183,7 @@ const Purchase = () => {
               type="number"
               name="cvv"
               id="cvv"
-              className="w-cart h-8 border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
+              className="w-cart h-8 border-2 xxs:text-sm  xxs:w-cart2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
               placeholder="Cvv"
               onChange={handleChange}
             />
@@ -201,7 +201,7 @@ const Purchase = () => {
                 name="month"
                 id="month"
                 maxLength={2}
-                className="w-20 h-8 border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
+                className="w-20 xxs:w-12 h-8 xxs:text-sm  border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
                 placeholder="MM"
                 onChange={handleChange}
               />
@@ -210,7 +210,7 @@ const Purchase = () => {
                 id="year"
                 name="year"
                 maxLength={2}
-                className="w-20 h-8 border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
+                className="w-20 xxs:w-12 xxs:text-sm h-8 border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
                 placeholder="YY"
                 onChange={handleChange}
               />

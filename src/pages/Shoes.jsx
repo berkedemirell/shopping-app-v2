@@ -9,7 +9,7 @@ const Shoes = () => {
       <div className="grid grid-cols-6 gap-4 p-10 lg:grid-cols-4 md:flex md:flex-row md:flex-wrap">
         {phones.map((shoe, i) => {
           return (
-            <div key={i} className="border border-slate-800 rounded-lg bg-shoe-card ssm:flex ssm:gap-2 ssm:p-4 ssm:items-center ssm:justify-center ssm:w-fit xs:h-36">
+            <div key={i} className="border border-slate-800 rounded-lg xxxs:p-1 bg-shoe-card xxxs:w-fit xxxs:h-fit ssm:flex xxxs:gap-0 ssm:gap-2 xxxs:flex-col ssm:p-4 ssm:items-center ssm:justify-center ssm:w-fit xs:h-36">
               <div>
                 <img src={shoe.thumbnail} alt="" width={400} height={400} className="rounded-lg xs:h-32 h-52 sm:w-60 ssm:w-36"/>
               </div>
@@ -18,7 +18,7 @@ const Shoes = () => {
                 <h1 className="text-center ssm:w-36 xs:text-sm xxs:text-xs">{shoe.title}</h1>
                 <h1 className="text-center xs:text-sm xxs:text-xs">${shoe.price}</h1>
               </div>
-              <div className="flex flex-row items-center ssm:flex-col text-sm justify-center gap-4 text-slate-950 mb-4 font-semibold">
+              <div className="flex flex-row items-center ssm:flex-col text-sm justify-center gap-4 text-slate-950 mb-4 xxxs:m-0 xxxs:gap-2 font-semibold">
                 <Link to={`/product/${shoe.id}`} className="underline md:text-lg xs:text-xs">Details</Link>
                 <button className="underline md:text-lg xs:text-xs" id={shoe.id} onClick={addToCart}>Add to Cart</button>
                 <button

@@ -82,7 +82,7 @@ const Nav = () => {
           {currentUser?.length !== 0 && (
             <div className="">
               <button
-                className="hover:opacity-70 xxs:text-xs transition-all duration-500 flex flex-row items-center gap-1 xs:text-sm"
+                className="hover:opacity-70 final:hidden xxs:text-xs transition-all duration-500 flex flex-row items-center gap-1 xs:text-sm"
                 onClick={handleCart}
               >
                 Cart({cart?.length}){" "}
@@ -111,13 +111,20 @@ const Nav = () => {
             </button>
           )}
           {isAcc && (
-            <div className="flex flex-col xs:text-sm gap-2 absolute md:-left-8 top-14 left-24 bg-slate-800 p-4 rounded-lg z-10">
+            <div className="flex flex-col xs:text-sm gap-2 final:-left-24 final:top-10 absolute md:-left-8 top-14 left-24 bg-slate-800 p-4 rounded-lg z-10">
               <Link
                 to="/products"
                 className="hover:opacity-70 transition-all duration-500 hidden md:block"
                 onClick={() => setIsAcc(false)}
               >
                 Products
+              </Link>
+              <Link
+                to="/payment"
+                className="hover:opacity-70 transition-all duration-500 hidden final:block"
+                onClick={() => setIsAcc(false)}
+              >
+                Cart({cart?.length})
               </Link>
               <Link
                 to="/account/favourites"
