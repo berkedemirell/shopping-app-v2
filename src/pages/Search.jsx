@@ -7,7 +7,7 @@ const Search = () => {
   return (
     <div className="w-screen h-fit font-rem bg-cat2">
       <div><p className="p-2 text-xl text-indigo-900 font-bold">{searchedArray?.length} results found.</p></div>
-    <div className="grid grid-cols-6 gap-4 p-10">
+    <div className="grid grid-cols-6 gap-4 p-10 lg:grid-cols-4">
       {searchedArray?.length === 0 ? <div className="text-center mt-4 font-bold h-screen">
         <div className=""><h1 className="text-xl text-red-900 inline-block">Nothing Found...</h1></div>
       </div>

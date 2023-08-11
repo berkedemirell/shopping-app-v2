@@ -6,23 +6,23 @@ const All = () => {
     const {products, addToFav, addToCart} = useContext(DataContext);
   return (
     <div className="w-screen h-fit font-rem bg-shoes">
-        <div className="grid grid-cols-6 gap-4 p-10">
+        <div className="grid grid-cols-6 gap-4 p-10 md:p-4 lg:grid-cols-4 md:flex md:flex-row md:flex-wrap">
           {products?.map((pro, i) => {
             return (
-              <div key={i} className="border border-slate-800 rounded-lg bg-shoe-card">
+              <div key={i} className="border ssm:flex ssm:gap-2 ssm:p-4 ssm:items-center ssm:justify-center border-slate-800 rounded-lg bg-shoe-card ssm:w-fit xs:h-36">
                 <div>
-                  <img src={pro.thumbnail} alt="" width={300} height={200} className="rounded-lg h-52 p-2"/>
+                  <img src={pro.thumbnail} alt="" className="rounded-lg sm:w-60 h-52 xs:h-28 p-2 ssm:w-36"/>
                 </div>
                 <div className='font-bold mt-2 text-slate-950 h-24'>
-                  <h1 className="text-center">{pro.category.name}</h1>
-                  <h1 className="text-center">{pro.title}</h1>
-                  <h1 className="text-center">${pro.price}</h1>
+                  <h1 className="text-center uppercase xs:text-sm xxs:text-xs">{pro.category}</h1>
+                  <h1 className="text-center ssm:w-36 xs:text-sm xxs:text-xs">{pro.title}</h1>
+                  <h1 className="text-center xs:text-sm">${pro.price}</h1>
                 </div>
-                <div className="flex flex-row items-center text-sm justify-center gap-4 text-slate-950 mb-4 font-semibold">
-                  <Link to={`/product/${pro.id}`} className="underline" id={pro.id}>Details</Link>
-                  <button className="underline" id={pro.id} onClick={addToCart}>Add to Cart</button>
+                <div className="flex ssm:flex-col flex-row items-center text-sm justify-center gap-4 text-slate-950 mb-4 font-semibold">
+                  <Link to={`/product/${pro.id}`} className="underline md:text-lg xs:text-xs" id={pro.id}>Details</Link>
+                  <button className="underline md:text-lg xs:text-xs" id={pro.id} onClick={addToCart}>Add to Cart</button>
                   <button
-                  className="text-center text-md"
+                  className="text-center xs:text-lg text-md md:text-2xl"
                   id={pro.id}
                   onClick={addToFav}
                 >

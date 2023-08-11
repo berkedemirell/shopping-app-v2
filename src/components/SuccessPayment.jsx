@@ -8,8 +8,8 @@ const SuccessPayment = () => {
             <img src={image} alt="" className='w-success-w h-success rounded-full'/>
         </div>
         <div>
-            <p className='text-4xl mt-2 text-indigo-700 font-bold uppercase'>Thanks for shopping from us</p>
-            <p className='text-center text-2xl text-indigo-700 font-bold uppercase'>We received your order</p>
+            <p className='text-4xl mt-2 text-indigo-700 font-bold uppercase ssm:text-2xl'>Thanks for shopping from us</p>
+            <p className='text-center text-2xl text-indigo-700 ssm:text-xl font-bold uppercase'>We received your order</p>
         </div>
         <div><Link to='/products' className='underline text-xl font-bold'>Continue shopping &rarr;</Link></div>
     </div>

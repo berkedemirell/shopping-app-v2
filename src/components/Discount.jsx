@@ -45,11 +45,11 @@ export const Discount = () => {
           type="text"
           name="discount"
           onChange={handleChange}
-          className="border border-indigo-700 bg-slate-200 rounded-tl-md rounded-bl-md w-52 h-8 p-1 text-indigo-700 font-bold"
+          className="border border-indigo-700 xxs:text-xs ssm:text-sm bg-slate-200 rounded-tl-md rounded-bl-md w-52 h-8 p-1 text-indigo-700 font-bold xxs:h-6"
           readOnly={isDiscounted ? true : false}
           placeholder="Apply a discount code"
         />
-        <button className="bg-indigo-600 rounded-tr-md rounded-br-md pl-2 pr-2 h-8 text-slate-50 hover:bg-indigo-900 active:bg-indigo-700 transition-all duration-400" onClick={handleDiscount}>
+        <button className="bg-indigo-600 rounded-tr-md ssm:text-sm rounded-br-md xxs:h-6 pl-2 pr-2 h-8 text-slate-50 hover:bg-indigo-900 active:bg-indigo-700 transition-all duration-400" onClick={handleDiscount}>
           Apply
         </button>
       </div>

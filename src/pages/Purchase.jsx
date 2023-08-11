@@ -85,40 +85,40 @@ const Purchase = () => {
 
   return (
     <div className="font-mono">
-    {!isPaid ? <div className="p-10 flex flex-row items-start justif-center w-full gap-12 font-rem">
-      {cart?.length !== 0 ? <div className="w-1/2 ml-4">
+    {!isPaid ? <div className="p-10 xxs:p-4 flex flex-row md:flex-col md:items-center items-start justif-center w-full gap-12 font-rem">
+      {cart?.length !== 0 ? <div className="w-1/2 ml-4 md:w-full">
         {cart?.map((c, i) => {
           return (
             <div key={i}>
-              <div className="flex flex-row items-center gap-12 mb-2 p-2 border-b border-slate-400">
-                <div className="text-lg font-bold">{i + 1}.</div>
-                <div>
+              <div className="flex flex-row items-center gap-12 mb-2 xxs:gap-6 p-2 border-b border-slate-400">
+                <div className="text-lg font-bold xxs:text-xs">{i + 1}.</div>
+                <div className="ssm:hidden">
                   <img
                     src={c.thumbnail}
                     alt=""
-                    className="w-14 h-14 rounded-full"
+                    className="w-14 h-14 ssm:w-14 ssm:h-8 ssm:h-6 rounded-full"
                   />
                 </div>
-                <div className="w-40">
-                  <p className="text-sm font-bold text-slate-600">
+                <div className="w-40 ssm:w-24">
+                  <p className="text-sm font-bold text-slate-600 xxs:text-xs xxs:w-10">
                     <Link to={`/product/${c?.id}`}>{c?.title}</Link>
                   </p>
                 </div>
-                <div className="w-20 text-center">
-                  <p className="text-sm font-bold text-slate-800">
+                <div className="w-20 text-center xs:w-10">
+                  <p className="text-sm font-bold text-slate-800 xxs:text-xs xxs:w-10">
                     ${c?.price}
                   </p>
                 </div>
-                <div className="flex flex-row gap-4">
+                <div className="flex flex-row gap-4 xs:w-20">
                   <button
-                    className="text-red-800 font-bold"
+                    className="text-red-800 font-bold xxs:text-xs"
                     id={i}
                     onClick={handleDeleteCart}
                   >
                     Delete
                   </button>
                   <button
-                    className="text-green-900 font-bold"
+                    className="text-green-900 font-bold xxs:text-xs"
                     id={c.id}
                     onClick={addToCart}
                   >
@@ -131,15 +131,15 @@ const Purchase = () => {
         })}
         <div className="mt-4 text-end p-4">
           <div><Discount/></div>
-          <p className={`text-indigo-700 font-bold text-lg uppercase ${isDiscounted ? 'line-through' : ''}`} id="amount">Total Amount: ${total}</p>
-          {isDiscounted && <p className="text-indigo-700 font-bold text-lg uppercase" id="discounted-amount">Discounted price(%{selectedCode?.rate*100}): ${(Number(total)) - (Number(total) * Number((selectedCode?.rate)))}</p>}
+          <p className={`text-indigo-700 font-bold text-lg uppercase xxs:text-sm ${isDiscounted ? 'line-through' : ''}`} id="amount">Total Amount: ${total}</p>
+          {isDiscounted && <p className="text-indigo-700 font-bold text-lg uppercase xxs:text-sm" id="discounted-amount">Discounted price(%{selectedCode?.rate*100}): ${(Number(total)) - (Number(total) * Number((selectedCode?.rate)))}</p>}
         </div>
       </div> : 
-      <div className="w-1/2 p-4 text-center">
+      <div className="w-1/2 sm:full md:w-full p-4 text-center">
           <p className="font-bold text-slate-500 uppercase">Your cart is empty</p>
         </div>}
-      <div className="w-1/2 mt-6">
-        <form className="flex flex-col gap-4 items-start ml-24">
+      <div className="w-1/2 sm:w-full md:w-full mt-6 xs:mt-0">
+        <form className="flex flex-col gap-4 items-start sm:justify-start sm:items-start ml-24 xs:ml-4">
           <div className="flex flex-col">
             <label
               htmlFor="name"

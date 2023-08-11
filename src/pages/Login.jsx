@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div className="font-rem flex flex-row justify-between">
       <div className="w-1/3 h-screen bg-gradient-to-r from-login1 to-login2"></div>
-      <div className="flex flex-row mt-40 h-formh border border-indigo-300 p-6 rounded-lg">
+      <div className="flex flex-row mt-40 ssm:mt-20 md:mt-20 h-formh border border-indigo-300 p-6 rounded-lg">
         <form action="login" className="flex flex-col gap-2 h-formh">
           <h1 className="text-center text-xl uppercase mb-10 font-bold">
             Login
