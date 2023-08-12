@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import DataContext from "../context/DataContext";
 
 const Nav = () => {
-  const { currentUser, handleChange, handleSubmitCat, favs, cart,cats } =
+  const { currentUser, handleChange, handleSubmitCat, favs, cart, cats } =
     useContext(DataContext);
   const [isAcc, setIsAcc] = useState(false);
   const [isCart, setIsCart] = useState(false);
@@ -14,7 +14,7 @@ const Nav = () => {
     setIsAcc((prev) => !prev);
     setIsCart(false);
   };
-
+  const [isDropDown, setIsDropDown] = useState(false)
   const handleCart = () => {
     setIsCart((prev) => !prev);
     setIsAcc(false);
@@ -25,6 +25,11 @@ const Nav = () => {
     navigate("/");
     window.location.reload();
   };
+
+  const handleDropDown = (e) => {
+    e.preventDefault();
+    setIsDropDown((prev) => !prev)
+  }
   return (
     <div className="text-slate-200 bg-gradient-to-r from-nav to-nav2 xxs:pb-4 xxs:pt-4 flex flex-row justify-between p-2 xs:p-1 items-center font-rem tracking-wider">
       <div className="flex flex-row items-center gap-2 pl-4">
@@ -152,18 +157,42 @@ const Nav = () => {
             <>
               <Link
                 to="/login"
-                className="hover:opacity-70 transition-all xs:text-sm duration-500 xxs:text-sm"
+                className="hover:opacity-70 transition-all xs:text-sm duration-500 xxs:text-sm ssm:hidden"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="hover:opacity-70 transition-all xs:text-sm duration-500 xxs:text-sm"
+                className="hover:opacity-70 transition-all xs:text-sm duration-500 xxs:text-sm ssm:hidden"
               >
                 Register
               </Link>
             </>
           )}
+          {currentUser?.length === 0 && <div className="relative hidden ssm:block">
+            <button className="rotate-90" onClick={handleDropDown}>...</button>
+            {isDropDown && <div className="absolute -left-24 text-start rounded-lg top-8 p-4 bg-indigo-900 flex flex-col">
+              <Link
+                to="/products"
+                className="hover:opacity-70 transition-all duration-500 hidden md:block xs:text-sm"
+                onClick={() => setIsAcc(false)}
+              >
+                Products
+              </Link>
+              <Link
+                to="/login"
+                className="hover:opacity-70 transition-all xs:text-sm duration-500"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="hover:opacity-70 transition-all xs:text-sm duration-500"
+              >
+                Register
+              </Link>
+            </div>}
+          </div>}
         </div>
       </div>
     </div>

@@ -123,7 +123,7 @@ export const DataContextProvider = ({ children }) => {
 
 
   const searchedArray = modified.filter((m) => {
-    const letters = search?.split(" ");
+    const letters = search?.toLowerCase().split(" ");
     const modifiedLetter = letters.filter((letter) => {
       if(letter === ' ') {
         return false
