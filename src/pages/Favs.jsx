@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Favs = () => {
   const { favs, handleDeleteFavs } = useContext(DataContext);
   return (
-    <div>
-      <div className="mt-10 mb-10 font-rem">
+    <div className="h-fit font-rem">
+      {favs?.length !== 0 ? <div className="mt-10 mb-10 font-rem">
         {favs?.map((fav, i) => {
           return (
             <div key={i} className="flex xxs:capitalize xxs:font-semibold hover:bg-slate-200 flex-row text-indigo-800 items-center justify-evenly pb-4 pt-4 xxs:p-2 uppercase font-bold border-b border-slate-400">
@@ -26,7 +26,11 @@ const Favs = () => {
             </div>
           );
         })}
-      </div>
+      </div> : <div className="flex flex-col items-center justify-start h-screen">
+        
+          <div className="mt-12 text-md text-slate-500 font-bold uppercase xxxs:text-xs">No product found in your favourites</div>
+        
+        </div>}
     </div>
   );
 };

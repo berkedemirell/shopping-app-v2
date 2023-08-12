@@ -52,6 +52,8 @@ export default {
         'formh2': '15rem',
         'success': '20rem',
         'favs-i': '5rem',
+        'carth': '25rem',
+        'carth2': '18rem',
       },
       colors: {
         'nav': '#9c57a8',
