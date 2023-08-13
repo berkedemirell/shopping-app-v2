@@ -37,6 +37,7 @@ export default {
         'header': '40rem',
         'pro-pic': '27rem',
         'cart': '20rem',
+        'cartl': '30rem',
         'cart2': '15rem',
         'title': '7rem',
         'favs-i': '5rem',
@@ -72,6 +73,7 @@ export default {
       },
       screens: {
         'lg': {'max': '1020px'},
+        'xl': {'min' : '1400px'},
         'md': {'max': '845px'},
         'sm': {'max': '700px'},
         'ssm': {'max': '560px'},

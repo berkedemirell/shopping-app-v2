@@ -9,7 +9,7 @@ import groce from "../style/groceries.png";
 
 const Products = () => {
   return (
-    <div className="w-full h-fit bg-gradient-to-r from-indigo-200 to-indigo-300 font-rem">
+    <div className="w-full h-fit bg-gradient-to-r from-indigo-200 to-indigo-300 font-rem xl:text-3xl">
       <div className="grid grid-cols-2 gap-4 p-14 sm:flex sm:flex-col">
         <Link
           to="/products/shoes"
@@ -25,7 +25,7 @@ const Products = () => {
             />
           </div>
           <div className="p-4">
-            <h1 className="uppercase text-xs">Smartphones</h1>
+            <h1 className="uppercase text-xs xl:text-lg">Smartphones</h1>
             <h1 className="text-md xxs:text-sm">See Products</h1>
             <h1 className="text-3xl text-end">&rarr;</h1>
           </div>
@@ -44,7 +44,7 @@ const Products = () => {
             />
           </div>
           <div className="p-4">
-            <h1 className="uppercase text-xs">Laptops</h1>
+            <h1 className="uppercase text-xs xl:text-lg">Laptops</h1>
             <h1 className="text-md xxs:text-sm ">See Products</h1>
             <h1 className="text-3xl text-end">&rarr;</h1>
           </div>
@@ -63,7 +63,7 @@ const Products = () => {
             />
           </div>
           <div className="p-4">
-            <h1 className="uppercase text-xs">Fragrances</h1>
+            <h1 className="uppercase text-xs xl:text-lg">Fragrances</h1>
             <h1 className="text-md xxs:text-sm">See Products</h1>
             <h1 className="text-3xl text-end">&rarr;</h1>
           </div>
@@ -82,7 +82,7 @@ const Products = () => {
             />
           </div>
           <div className="p-4">
-            <h1 className="uppercase text-xs">Skincare</h1>
+            <h1 className="uppercase text-xs xl:text-lg">Skincare</h1>
             <h1 className="text-md xxs:text-sm">See Products</h1>
             <h1 className="text-3xl text-end">&rarr;</h1>
           </div>
@@ -101,7 +101,7 @@ const Products = () => {
             />
           </div>
           <div className="p-4">
-            <h1 className="uppercase text-xs">Groceries</h1>
+            <h1 className="uppercase text-xs xl:text-lg">Groceries</h1>
             <h1 className="text-md xxs:text-sm">See Products</h1>
             <h1 className="text-3xl text-end">&rarr;</h1>
           </div>
@@ -120,7 +120,7 @@ const Products = () => {
             />
           </div>
           <div className="p-4">
-            <h1 className="uppercase text-xs">Decoration</h1>
+            <h1 className="uppercase text-xs xl:text-lg">Decoration</h1>
             <h1 className="text-md xxs:text-sm">See Products</h1>
             <h1 className="text-3xl text-end">&rarr;</h1>
           </div>
@@ -139,7 +139,7 @@ const Products = () => {
             />
           </div>
           <div className="p-4">
-            <h1 className="uppercase text-xs">All</h1>
+            <h1 className="uppercase text-xs xl:text-lg">All</h1>
             <h1 className="text-md xxs:text-sm">See Products</h1>
             <h1 className="text-3xl text-end">&rarr;</h1>
           </div>
