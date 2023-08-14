@@ -20,6 +20,7 @@ export default {
     './src/pages/Products.jsx',
     './src/pages/Electronics.jsx',
     './src/components/SuccessPayment.jsx',
+    './src/components/EmptyCard.jsx',
     './src/components/Discount.jsx',
     './src/pages/Search.jsx',
   ],
