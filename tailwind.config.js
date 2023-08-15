@@ -22,6 +22,7 @@ export default {
     './src/components/SuccessPayment.jsx',
     './src/components/EmptyCard.jsx',
     './src/components/Discount.jsx',
+    './src/components/Paginate.jsx',
     './src/pages/Search.jsx',
   ],
   theme: {

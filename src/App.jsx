@@ -1,6 +1,9 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import './index.css'
+import React, { Suspense } from 'react'
 import Nav from "./components/Nav";
-import Main from "./pages/Main";
+// import Main from "./pages/Main";
+const Main = React.lazy(() => import ('./pages/Main.jsx'))
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
@@ -11,11 +14,13 @@ import Fragrance from "./pages/Fragrance";
 import Skin from "./pages/Skin";
 import Groceries from "./pages/Groceries";
 import Decoration from "./pages/Decoration";
-import All from "./pages/All";
+// import All from "./pages/All";
 import Register from "./pages/Register";
 import Favs from "./pages/Favs";
 import Purchase from "./pages/Purchase";
-import Search from "./pages/Search";
+// import Search from "./pages/Search";
+const Search = React.lazy(() => import ('./pages/Search.jsx'))
+const All = React.lazy(() => import ('./pages/All.jsx'))
 
 //https://api.escuelajs.co/api/v1/products
 
@@ -38,7 +43,7 @@ function App() {
       children: [
         {
           path:"/",
-          element:<Main/>
+          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load"></div></div>}><Main/></Suspense>
         },
         {
           path:"/products",
@@ -62,11 +67,13 @@ function App() {
         },
         {
           path:"/products/all",
-          element:<All/>
+          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load"></div></div>}>
+              <All/>
+            </Suspense>
         },
         {
           path:"/search",
-          element:<Search/>
+          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load"></div></div>}><Search/></Suspense>
         },
         {
           path:"/payment",

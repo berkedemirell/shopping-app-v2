@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
+import Paginate from "../components/Paginate";
 
 const All = () => {
-    const {products, addToFav, addToCart} = useContext(DataContext);
+    const {products, addToFav, addToCart,indexOfFirstProduct, indexOfLastProduct} = useContext(DataContext);
     const [sort, setSort] = useState(false)
     const [sort2, setSort2] = useState(false)
 
@@ -20,6 +21,8 @@ const All = () => {
     const handleSort2 = () => {
       setSort2((prev) => !prev)
     }
+    const posts = (sort && newArrayCte || sort2 && newArrayEtc || products).slice(indexOfFirstProduct, indexOfLastProduct);
+
   return (
     <div className="w-screen h-fit font-rem bg-shoes">
       <div className="p-2 ml-8">
@@ -33,7 +36,7 @@ const All = () => {
         </div>
       </div>
         <div className="grid grid-cols-6 gap-4 p-10 md:p-4 lg:grid-cols-4 md:flex md:flex-row md:flex-wrap">
-          {(sort && newArrayCte || sort2 && newArrayEtc || products)?.map((pro, i) => {
+          {(posts)?.map((pro, i) => {
             return (
               <div key={i} className="border ssm:flex ssm:gap-2 ssm:p-4 ssm:items-center ssm:justify-center xxxs:flex-col xxxs:h-fit xxxs:p-1 border-slate-800 rounded-lg bg-shoe-card ssm:w-fit xs:h-36">
                 <div>
@@ -59,6 +62,7 @@ const All = () => {
             );
           })}
         </div>
+        <Paginate sort={sort} sort2={sort2} newArrayCte={newArrayCte} newArrayEtc={newArrayEtc}/>
       </div>
   )
 }

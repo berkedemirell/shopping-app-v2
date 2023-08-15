@@ -10,6 +10,8 @@ export const DataContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cats, setCats] = useState("");
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productPerPage] = useState(12);
   const [selectedCode, setSelectedCode] = useState({})
   const [isDiscounted, setIsDiscounted] = useState(false);
   const [favs, setFavs] = useState(() => {
@@ -37,6 +39,27 @@ export const DataContextProvider = ({ children }) => {
     }
   });
   const total = cart?.map((p) => p.price)?.reduce((a, b) => a + b, 0);
+
+  const indexOfLastProduct = currentPage * productPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productPerPage;
+  const currentPosts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const previousPage = () => {
+    if (currentPage !== 1) {
+       setCurrentPage(currentPage - 1);
+    }
+ };
+
+ const nextPage = () => {
+  if (currentPage !== Math.ceil(products.length / productPerPage)) {
+     setCurrentPage(currentPage + 1);
+  }
+  };
+
 
   const addToFav = (e) => {
     e.preventDefault();
@@ -181,6 +204,14 @@ export const DataContextProvider = ({ children }) => {
         total,
         selectedCode,
         setSelectedCode,
+        currentPage,
+        productPerPage,
+        previousPage,
+        nextPage,
+        paginate,
+        currentPosts,
+        indexOfFirstProduct,
+        indexOfLastProduct
       }}
     >
       {children}
