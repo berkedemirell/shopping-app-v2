@@ -211,7 +211,8 @@ export const DataContextProvider = ({ children }) => {
         paginate,
         currentPosts,
         indexOfFirstProduct,
-        indexOfLastProduct
+        indexOfLastProduct,
+        setCurrentPage
       }}
     >
       {children}

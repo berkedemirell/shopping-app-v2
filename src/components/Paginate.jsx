@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DataContext from "../context/DataContext";
 
@@ -10,9 +10,14 @@ const Paginate = () => {
     products,
     productPerPage,
     currentPage,
+    setCurrentPage,
   } = useContext(DataContext);
 
   let pageNumbers = [];
+
+  useEffect(() => {
+    setCurrentPage(1)
+  },[setCurrentPage])
 
   for (let i = 1; i <= Math.ceil(products.length / productPerPage); i++) {
     pageNumbers.push(i);
