@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Lazy = React.lazy(() => import ('../components/LazyImage'))
 
 const Electronics = () => {
-  const { laptops, addToFav, addToCart } = useContext(DataContext);
+  const { laptops, addToFav, addToCart, addToLasts} = useContext(DataContext);
 
   const [sort, setSort] = useState(false)
   const [sort2, setSort2] = useState(false)
@@ -61,6 +61,7 @@ const Electronics = () => {
                   to={`/product/${elect.id}`}
                   className="underline md:text-lg xs:text-xs"
                   id={elect.id}
+                  onClick={addToLasts}
                 >
                   Details
                 </Link>

@@ -5,7 +5,7 @@ import Paginate from "../components/Paginate";
 const Lazy = React.lazy(() => import ('../components/LazyImage'))
 
 const All = () => {
-    const {products, addToFav, addToCart,indexOfFirstProduct, indexOfLastProduct} = useContext(DataContext);
+    const {products, addToFav, addToCart,indexOfFirstProduct, indexOfLastProduct, addToLasts} = useContext(DataContext);
     const [sort, setSort] = useState(false)
     const [sort2, setSort2] = useState(false)
 
@@ -49,7 +49,7 @@ const All = () => {
                   <h1 className="text-center xs:text-sm">${pro.price}</h1>
                 </div>
                 <div className="flex ssm:flex-col flex-row items-center text-sm justify-center xxxs:gap-2 xxxs:mb-0 gap-4 text-slate-950 mb-4 font-semibold">
-                  <Link to={`/product/${pro.id}`} className="underline md:text-lg xs:text-xs" id={pro.id}>Details</Link>
+                  <Link to={`/product/${pro.id}`} className="underline md:text-lg xs:text-xs" id={pro.id} onClick={addToLasts}>Details</Link>
                   <button className="underline md:text-lg xs:text-xs" id={pro.id} onClick={addToCart}>Add to Cart</button>
                   <button
                   className="text-center xs:text-lg text-md md:text-2xl"

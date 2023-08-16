@@ -3,7 +3,7 @@ import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 
 const Search = () => {
-  const { searchedArray,addToFav,addToCart } = useContext(DataContext);
+  const { searchedArray,addToFav,addToCart, addToLasts } = useContext(DataContext);
   return (
     <div className="w-screen h-fit font-rem bg-cat2">
       <div><p className="p-2 text-xl text-indigo-900 font-bold">{searchedArray?.length} results found.</p></div>
@@ -23,7 +23,7 @@ const Search = () => {
               <h1 className="text-center xs:text-sm xxs:text-xs">${d.price}</h1>
             </div>
             <div className="flex flex-row items-center ssm:flex-col text-sm justify-center gap-4 text-slate-950 mb-4 xxxs:m-0 xxs:gap-2 font-semibold">
-              <Link to={`/product/${d.id}`} className="underline md:text-lg xs:text-xs xxs:text-xs">Details</Link>
+              <Link to={`/product/${d.id}`} id={d.id} className="underline md:text-lg xs:text-xs xxs:text-xs" onClick={addToLasts}>Details</Link>
               <button className="underline text-center text-md md:text-2xl xs:text-lg md:text-sm xxs:text-xs" id={d.id} onClick={addToCart}>Add to Cart</button>
               <button
                   className="text-center text-md"

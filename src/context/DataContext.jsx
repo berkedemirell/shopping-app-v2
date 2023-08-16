@@ -11,6 +11,14 @@ export const DataContextProvider = ({ children }) => {
   const [cats, setCats] = useState("");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [last, setLast] = useState(() => {
+    const savedLasts = localStorage.getItem('last')
+    if(savedLasts) {
+      return JSON.parse(savedLasts)
+    } else {
+      return []
+    }
+  })
   const [productPerPage] = useState(12);
   const [selectedCode, setSelectedCode] = useState({})
   const [isDiscounted, setIsDiscounted] = useState(false);
@@ -63,6 +71,17 @@ export const DataContextProvider = ({ children }) => {
      window.scrollTo({top: 0, behavior: 'smooth'})
   }
   };
+
+  const addToLasts = (e) => {
+    const selected = products.filter((pro) => Number(e.target.id) === Number(pro.id))[0]
+  
+    if(last.length < 3) {
+      setLast([...last, selected])
+    }else {
+      last.shift();
+      setLast([...last, selected])
+    }
+  }
 
 
   const addToFav = (e) => {
@@ -164,12 +183,13 @@ export const DataContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('favs', JSON.stringify(favs))
     localStorage.setItem('cart', JSON.stringify(cart))
+    localStorage.setItem('last', JSON.stringify(last))
     const getProducts = async () => {
       const res = await axios.get("https://dummyjson.com/products");
       setProducts(res.data.products);
     };
     getProducts();
-  }, [favs, cart]);
+  }, [favs, cart, last]);
 
   const laptops = products.filter((pro) => pro.category === "laptops");
   const phones = products.filter((pro) => pro.category === "smartphones");
@@ -216,7 +236,9 @@ export const DataContextProvider = ({ children }) => {
         currentPosts,
         indexOfFirstProduct,
         indexOfLastProduct,
-        setCurrentPage
+        setCurrentPage,
+        addToLasts,
+        last,
       }}
     >
       {children}

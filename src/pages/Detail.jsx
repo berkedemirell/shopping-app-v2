@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom"
+import DataContext from "../context/DataContext";
 
 
 
 const Detail = () => {
     const [single, setSingle] = useState({});
     const location = useLocation();
+    const {addToCart} = useContext(DataContext)
     
     const path = location.pathname.split("/")[2]
     useEffect(() => {  
@@ -20,8 +22,9 @@ const Detail = () => {
 
   return (
     <div className="flex p-10 flex-row items-center justify-center gap-12 font-rem bg-gradient-to-r from-purple-100 to-purple-200">
-        <div>
+        <div className="text-center">
             <img src={single.thumbnail} alt="" className="w-success-w rounded-full"/>
+            <button className="mt-2 text-center underline" id={single.id} onClick={addToCart}>Add to cart</button>
         </div>
         <div className="w-cart flex flex-col gap-4">
             <p><span className="uppercase font-bold">Brand: </span>{single.brand}</p>

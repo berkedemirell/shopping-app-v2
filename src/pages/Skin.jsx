@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Lazy = React.lazy(() => import ('../components/LazyImage'))
 
 const Skin = () => {
-    const {skin, addToFav, addToCart} = useContext(DataContext);
+    const {skin, addToFav, addToCart, addToLasts} = useContext(DataContext);
     const [sort, setSort] = useState(false)
     const [sort2, setSort2] = useState(false)
   
@@ -49,7 +49,7 @@ const Skin = () => {
                 <h1 className="text-center xs:text-sm xxs:text-xs">${s.price}</h1>
               </div>
               <div className="flex flex-row ssm:flex-col items-center justify-center text-sm gap-4 xxxs:gap-2 xxxs:mb-0 text-slate-950 mb-4 font-semibold">
-                <Link to={`/product/${s.id}`} className="underline md:text-lg xs:text-xs">Details</Link>
+                <Link to={`/product/${s.id}`} className="underline md:text-lg xs:text-xs" id={s.id} onClick={addToLasts}>Details</Link>
                 <button className="underline md:text-lg xs:text-xs" id={s.id} onClick={addToCart}>Add to Cart</button>
                 <button
                   className="text-center text-md md:text-2xl xs:text-lg"

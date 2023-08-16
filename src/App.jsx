@@ -18,6 +18,7 @@ import Decoration from "./pages/Decoration";
 import Register from "./pages/Register";
 import Favs from "./pages/Favs";
 import Purchase from "./pages/Purchase";
+import Account from "./pages/Account";
 // import Search from "./pages/Search";
 const Search = React.lazy(() => import ('./pages/Search.jsx'))
 const All = React.lazy(() => import ('./pages/All.jsx'))
@@ -78,6 +79,10 @@ function App() {
         {
           path:"/payment",
           element:<Purchase/>
+        },
+        {
+          path:"/account",
+          element:<Account/>
         },
         {
           path:"/account/favourites",

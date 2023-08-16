@@ -26,6 +26,7 @@ export default {
     './src/components/Progress.jsx',
     './src/components/LazyImage.jsx',
     './src/pages/Search.jsx',
+    './src/pages/Account.jsx',
   ],
   theme: {
     extend: {

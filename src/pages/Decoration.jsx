@@ -5,7 +5,7 @@ const Lazy = React.lazy(() => import ('../components/LazyImage'))
 
 
 const Decoration = () => {
-    const {deco, addToFav, addToCart} = useContext(DataContext);
+    const {deco, addToFav, addToCart, addToLasts} = useContext(DataContext);
     const [sort, setSort] = useState(false)
     const [sort2, setSort2] = useState(false)
 
@@ -47,7 +47,7 @@ const Decoration = () => {
               <h1 className="text-center xs:text-sm">${d.price}</h1>
             </div>
             <div className="flex flex-row ssm:flex-col items-center justify-center xxxs:gap-2 xxxs:mb-0 text-sm gap-4 text-slate-950 mb-4 font-semibold">
-              <Link to={`/product/${d.id}`} className="underline md:text-lg xs:text-xs">Details</Link>
+              <Link to={`/product/${d.id}`} className="underline md:text-lg xs:text-xs" id={d.id} onClick={addToLasts}>Details</Link>
               <button className="underline md:text-lg xs:text-xs" id={d.id} onClick={addToCart}>Add to Cart</button>
               <button
                   className="text-center text-md md:text-2xl xs:text-lg"

@@ -139,7 +139,7 @@ const Nav = () => {
                 Favourites({favs?.length})
               </Link>
               <Link
-                to="/"
+                to="/account"
                 className="hover:opacity-70 transition-all xl:text-xl duration-500"
               >
                 Account
