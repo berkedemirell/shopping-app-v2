@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState, Suspense } from "react";
 import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 
+const Lazy = React.lazy(() => import ('../components/LazyImage'))
 
 const Skin = () => {
     const {skin, addToFav, addToCart} = useContext(DataContext);
@@ -40,7 +41,7 @@ const Skin = () => {
           return (
             <div key={i} className="border border-slate-800 xxxs:p-1 rounded-lg bg-shoe-card xxxs:flex-col xxxs:h-fit ssm:flex ssm:gap-2 ssm:p-4 ssm:items-center ssm:justify-center ssm:w-fit xs:h-36">
               <div>
-                <img src={s.thumbnail} alt="" width={400} height={400} className="rounded-lg h-52 sm:w-60 ssm:w-36 xs:h-32"/>
+              <Suspense fallback={<div><div className="load2"></div></div>}><Lazy imgSrc={s.thumbnail}/></Suspense>
               </div>
               <div className='font-bold mt-2 text-slate-950 h-24'>
                 <h1 className="text-center xs:text-sm uppercase xxs:text-xs">{s.category}</h1>

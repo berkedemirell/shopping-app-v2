@@ -43,7 +43,7 @@ function App() {
       children: [
         {
           path:"/",
-          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300 p-12"><div className="load"></div></div>}><Main/></Suspense>
+          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300 p-12"><div className="load2"></div></div>}><Main/></Suspense>
         },
         {
           path:"/products",
@@ -67,13 +67,13 @@ function App() {
         },
         {
           path:"/products/all",
-          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load"></div></div>}>
+          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load2"></div></div>}>
               <All/>
             </Suspense>
         },
         {
           path:"/search",
-          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load"></div></div>}><Search/></Suspense>
+          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load2"></div></div>}><Search/></Suspense>
         },
         {
           path:"/payment",

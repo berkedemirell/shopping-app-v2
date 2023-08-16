@@ -24,6 +24,7 @@ export default {
     './src/components/Discount.jsx',
     './src/components/Paginate.jsx',
     './src/components/Progress.jsx',
+    './src/components/LazyImage.jsx',
     './src/pages/Search.jsx',
   ],
   theme: {

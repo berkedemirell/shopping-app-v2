@@ -30,11 +30,11 @@ const Paginate = () => {
           ""
         ) : (
           <Link onClick={previousPage} id="prev">
-            {currentPage !== 1 ? <li className="text-xl bg-purple-200 rounded-full p-1 pl-2 pr-2">&larr;</li> : ''}
+            {currentPage !== 1 ? <li className="text-xl bg-purple-200 rounded-full p-1 pl-3 pr-3">&larr;</li> : ''}
           </Link>
         )}
         {pageNumbers.map((number,i) => (
-          <Link className={`text-lg p-1 pl-3 pr-3 rounded-full ${currentPage === number ? 'bg-purple-700 text-slate-50' : 'bg-purple-200'}`} key={i} onClick={() => paginate(number)}>
+          <Link className={`text-lg p-1 pl-4 pr-4 rounded-full ${currentPage === number ? 'bg-purple-700 text-slate-50' : 'bg-purple-200'}`} key={i} onClick={() => paginate(number)}>
             <li className="">{number}</li>
           </Link>
         ))}
@@ -42,7 +42,7 @@ const Paginate = () => {
           ""
         ) : (
           <Link>
-            {currentPage !== pageNumbers.length ? <li id="next" className="text-xl bg-purple-200 rounded-full p-1 pl-2 pr-2" onClick={nextPage}>
+            {currentPage !== pageNumbers.length ? <li id="next" className="text-xl bg-purple-200 rounded-full p-1 pl-3 pr-3" onClick={nextPage}>
               &rarr;
             </li> : ''}
             {""}
