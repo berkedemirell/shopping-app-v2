@@ -23,6 +23,7 @@ export default {
     './src/components/EmptyCard.jsx',
     './src/components/Discount.jsx',
     './src/components/Paginate.jsx',
+    './src/components/Progress.jsx',
     './src/pages/Search.jsx',
   ],
   theme: {

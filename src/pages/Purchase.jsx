@@ -3,11 +3,13 @@ import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 import SuccessPayment from "../components/SuccessPayment";
 import Discount from "../components/Discount";
+import Progress from "../components/Progress";
 
 const Purchase = () => {
   const { cart, handleDeleteCart, addToCart,setCart,isDiscounted,total,selectedCode } = useContext(DataContext);
   const [error, setError] = useState('')
   const [isPaid, setIsPaid] = useState(false)
+  const [inProgress, setInProgress] = useState(false)
   // const splittedNumber = info?.cardNumber.match(/.{1,4}/g);
   // const newNumber = splittedNumber?.join(" ");
   const [cardInputs, setCardInputs] = useState({
@@ -39,6 +41,13 @@ const Purchase = () => {
       cvv: "144",
       month: "02",
       year: "29",
+    },
+    {
+      cardHolder: "asd",
+      cardNumber: "1234",
+      cvv:"31",
+      month: "02",
+      year: "31",
     },
   ];
 
@@ -72,7 +81,10 @@ const Purchase = () => {
     }
      else {
       setCart([])
-      setIsPaid(true)
+      setInProgress(true)
+      setTimeout(() => {
+        setIsPaid(true)
+      },4000)
     }
 
   };
@@ -85,7 +97,7 @@ const Purchase = () => {
 
   return (
     <div className="font-mono">
-    {!isPaid ? <div className="p-10 xxs:p-4 flex flex-row md:flex-col md:items-center items-start justif-center w-full gap-12 font-rem">
+    {!inProgress ? <div className="p-10 xxs:p-4 flex flex-row md:flex-col md:items-center items-start justif-center w-full gap-12 font-rem">
       {cart?.length !== 0 ? <div className="w-1/2 ml-4 md:w-full">
         {cart?.map((c, i) => {
           return (
@@ -227,7 +239,7 @@ const Purchase = () => {
           </div>
         </form>
       </div>
-    </div> : <SuccessPayment/>}
+    </div> : <div>{!isPaid ? <Progress/> : <SuccessPayment/>}</div>}
     </div>
   );
 };
