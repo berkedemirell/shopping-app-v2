@@ -43,7 +43,7 @@ function App() {
       children: [
         {
           path:"/",
-          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300"><div className="load"></div></div>}><Main/></Suspense>
+          element:<Suspense fallback={<div className="w-screen h-screen bg-indigo-300 p-12"><div className="load"></div></div>}><Main/></Suspense>
         },
         {
           path:"/products",

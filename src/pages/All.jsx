@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 import Paginate from "../components/Paginate";
+import {LazyLoadImage} from 'react-lazy-load-image-component'
 
 const All = () => {
     const {products, addToFav, addToCart,indexOfFirstProduct, indexOfLastProduct} = useContext(DataContext);
@@ -39,8 +40,9 @@ const All = () => {
           {(posts)?.map((pro, i) => {
             return (
               <div key={i} className="border ssm:flex ssm:gap-2 ssm:p-4 ssm:items-center ssm:justify-center xxxs:flex-col xxxs:h-fit xxxs:p-1 border-slate-800 rounded-lg bg-shoe-card ssm:w-fit xs:h-36">
-                <div>
-                  <img src={pro.thumbnail} alt="" className="rounded-lg sm:w-60 h-52 xs:h-28 p-2 ssm:w-36"/>
+                <div className="rounded-lg sm:w-60 h-52 xs:h-28 p-2 ssm:w-36">
+                  <LazyLoadImage src={pro.thumbnail} className="rounded-lg sm:w-60 h-52 xs:h-28 p-2 ssm:w-36"/>
+                    {/* <img src={pro.thumbnail} alt="" className="rounded-lg sm:w-60 h-52 xs:h-28 p-2 ssm:w-36"/> */}
                 </div>
                 <div className='font-bold mt-2 text-slate-950 h-24 mb-6'>
                   <h1 className="text-center uppercase xs:text-sm xxs:text-xs">{pro.category}</h1>
