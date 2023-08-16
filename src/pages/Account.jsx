@@ -3,9 +3,8 @@ import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 
 const Account = () => {
-  const { currentUser, last } = useContext(DataContext);
+  const { currentUser, last, handleDeleteLast } = useContext(DataContext);
 
-  console.log(last);
   return (
     <div className="flex flex-row items-center gap-36 font-rem p-12 md:flex-col md:gap-4">
       <div className="flex flex-col justify-center items-center text-indigo-800">
@@ -30,7 +29,7 @@ const Account = () => {
           </div>
         </div>
       </div>
-      <div>
+      {last?.length !== 0 ? <div>
         <p className="text-xl font-bold mb-4 text-indigo-800">Recently viewed products:</p>
         <div className="flex flex-row gap-10 ssm:flex-col">
           {last?.map((l, i) => {
@@ -45,7 +44,10 @@ const Account = () => {
                 </div>;
           })}
         </div>
-      </div>
+        <div className="text-end mt-2">
+          <button className="underline text-indigo-800 font-bold" onClick={handleDeleteLast}>Clear last views</button>
+        </div>
+      </div> : <div><p>Empty</p></div>}
     </div>
   );
 };

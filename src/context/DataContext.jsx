@@ -146,6 +146,12 @@ export const DataContextProvider = ({ children }) => {
     setFavs(newFavsArray);
   }
 
+  const handleDeleteLast = (e) => {
+    e.preventDefault();
+    const newArray = []
+    setLast(newArray);
+  }
+
   const handleDeleteCart = (e) => {
     e.preventDefault();
     const newCartArray = cart.filter((c,i) => {
@@ -239,6 +245,7 @@ export const DataContextProvider = ({ children }) => {
         setCurrentPage,
         addToLasts,
         last,
+        handleDeleteLast,
       }}
     >
       {children}
