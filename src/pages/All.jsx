@@ -40,7 +40,7 @@ const All = () => {
           {(posts)?.map((pro, i) => {
             return (
               <div key={i} className="border ssm:flex ssm:gap-2 ssm:p-4 ssm:items-center ssm:justify-center xxxs:flex-col xxxs:h-fit xxxs:p-1 border-slate-800 rounded-lg bg-shoe-card ssm:w-fit xs:h-36">
-                <div className="rounded-lg sm:w-60 h-52 xs:h-28 p-2 ssm:w-36">
+                <div className="">
                   <Suspense fallback={<div><div className="load2"></div></div>}><Lazy imgSrc={pro.thumbnail}/></Suspense>
                 </div>
                 <div className='font-bold mt-2 text-slate-950 h-24 mb-6'>
