@@ -46,17 +46,21 @@ export const DataContextProvider = ({ children }) => {
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo({top: 0, behavior: 'smooth'})
+
   };
 
   const previousPage = () => {
     if (currentPage !== 1) {
        setCurrentPage(currentPage - 1);
+       window.scrollTo({top: 0, behavior: 'smooth'})
     }
  };
 
  const nextPage = () => {
   if (currentPage !== Math.ceil(products.length / productPerPage)) {
      setCurrentPage(currentPage + 1);
+     window.scrollTo({top: 0, behavior: 'smooth'})
   }
   };
 
