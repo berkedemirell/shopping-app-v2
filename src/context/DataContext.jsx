@@ -30,6 +30,14 @@ export const DataContextProvider = ({ children }) => {
       return []
     }
   })
+  const [history, setHistory] = useState(() => {
+    const savedHis = localStorage.getItem('history');
+    if(savedHis) {
+      return JSON.parse(savedHis)
+    } else {
+      return []
+    }
+  })
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
     if(savedCart) {
@@ -171,8 +179,26 @@ export const DataContextProvider = ({ children }) => {
 
   const handleSubmitCat = () => {
     setSearch(cats);
+    if(history.length !== 10) {
+      setHistory([...history, cats])
+    } else {
+      history.shift();
+      setHistory([...history, cats])
+    }
   };
 
+  const handleDeleteHistory = (e) => {
+    e.preventDefault();
+    const newArray = history.filter((his,i) => {
+      if(Number(e.target.id) === Number(i)) {
+        return false
+      } else {
+        return true
+      }
+    })
+
+    setHistory(newArray);
+  }
 
   const searchedArray = modified.filter((m) => {
     const letters = search?.toLowerCase().split(" ");
@@ -190,12 +216,13 @@ export const DataContextProvider = ({ children }) => {
     localStorage.setItem('favs', JSON.stringify(favs))
     localStorage.setItem('cart', JSON.stringify(cart))
     localStorage.setItem('last', JSON.stringify(last))
+    localStorage.setItem('history', JSON.stringify(history))
     const getProducts = async () => {
       const res = await axios.get("https://dummyjson.com/products");
       setProducts(res.data.products);
     };
     getProducts();
-  }, [favs, cart, last]);
+  }, [favs, cart, last, history]);
 
   const laptops = products.filter((pro) => pro.category === "laptops");
   const phones = products.filter((pro) => pro.category === "smartphones");
@@ -246,6 +273,9 @@ export const DataContextProvider = ({ children }) => {
         addToLasts,
         last,
         handleDeleteLast,
+        history,
+        handleDeleteHistory,
+        setLast
       }}
     >
       {children}

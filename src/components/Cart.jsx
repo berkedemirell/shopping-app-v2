@@ -6,7 +6,7 @@ import EmptyCard from "./EmptyCard";
 
 const Cart = (props) => {
   const {cart, handleDeleteCart, addToCart } = useContext(DataContext);
-  const total = cart?.map(p => p.price)?.reduce((a,b) => a+b,0)
+  const total = cart?.map(p => p?.price)?.reduce((a,b) => a+b,0)
 
   const closeDrops = () => {
     props.setIsCart(false)
@@ -27,7 +27,7 @@ const Cart = (props) => {
                     <button id={pro.id} className="text-2xl ssm:text-xl" onClick={addToCart}>+</button>
                   </div>
                   <div>
-                    <p className="w-delete ssm:text-xs">${pro.price}</p>
+                    <p className="w-delete ssm:text-xs">${pro?.price}</p>
                   </div>
                 </div>
               </div>

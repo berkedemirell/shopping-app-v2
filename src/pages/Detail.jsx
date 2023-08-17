@@ -19,7 +19,6 @@ const Detail = () => {
         fetchSingle();
     }, [path])
 
-
   return (
     <div className="flex p-10 flex-row items-center justify-center gap-12 font-rem bg-gradient-to-r from-purple-100 to-purple-200">
         <div className="text-center">
