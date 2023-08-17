@@ -180,10 +180,10 @@ export const DataContextProvider = ({ children }) => {
   const handleSubmitCat = () => {
     setSearch(cats);
     if(history.length !== 10) {
-      setHistory([...history, cats])
+      setHistory([cats,...history])
     } else {
-      history.shift();
-      setHistory([...history, cats])
+      history.pop();
+      setHistory([cats ,...history])
     }
   };
 
