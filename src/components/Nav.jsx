@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import DataContext from "../context/DataContext";
 
 const Nav = () => {
-  const { currentUser, handleChange, handleSubmitCat, favs, cart, cats } =
+  const { currentUser, handleChange, handleSubmitCat, favs, cart, cats, handleDarkMode, isDark } =
     useContext(DataContext);
   const [isAcc, setIsAcc] = useState(false);
   const [isCart, setIsCart] = useState(false);
@@ -30,8 +30,11 @@ const Nav = () => {
     e.preventDefault();
     setIsDropDown((prev) => !prev)
   }
+
+  const cond = isDark ? 'text-slate-50 bg-slate-800' : 'bg-gradient-to-r from-nav to-nav2 text-slate-200'
+
   return (
-    <div className="text-slate-200 bg-gradient-to-r xl:p-6 from-nav to-nav2 xxs:pb-4 xxs:pt-4 flex flex-row justify-between p-2 xs:p-1 items-center font-rem tracking-wider">
+    <div className={`xxs:pb-4 xl:p-6 xxs:pt-4 flex flex-row ${cond} justify-between p-2 xs:p-1 items-center font-rem tracking-wider`}>
       <div className="flex flex-row items-center gap-2 pl-4">
         <Link to="/">
           <img
@@ -116,7 +119,7 @@ const Nav = () => {
             </button>
           )}
           {isAcc && (
-            <div className="flex flex-col xs:text-sm gap-2 final:-left-24 final:top-10 absolute md:-left-8 top-14 left-24 bg-slate-800 p-4 rounded-lg z-10">
+            <div className="flex flex-col items-start xs:text-sm gap-2 final:-left-24 final:top-10 absolute md:-left-8 top-14 left-24 bg-slate-800 p-4 rounded-lg z-10">
               <Link
                 to="/products"
                 className="hover:opacity-70 transition-all duration-500 hidden md:block"
@@ -144,6 +147,12 @@ const Nav = () => {
               >
                 Account
               </Link>
+              <button
+                className="hover:opacity-70 transition-all xl:text-xl duration-500"
+                onClick={handleDarkMode}
+              >
+                {isDark ? 'Light Mode' : 'Dark Mode'}
+              </button>
               <Link
                 to="/"
                 className="hover:opacity-70 transition-all xl:text-xl duration-500"

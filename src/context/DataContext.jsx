@@ -11,6 +11,7 @@ export const DataContextProvider = ({ children }) => {
   const [cats, setCats] = useState("");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [isDark, setIsDark] = useState(false)
   const [last, setLast] = useState(() => {
     const savedLasts = localStorage.getItem('last')
     if(savedLasts) {
@@ -46,6 +47,12 @@ export const DataContextProvider = ({ children }) => {
       return []
     }
   })
+
+  const handleDarkMode = (e) => {
+    e.preventDefault();
+    setIsDark((prev) => !prev)
+  }
+
   const [currentUser, setCurrentUser] = useState(() => {
     const user = localStorage.getItem("user");
     if (user) {
@@ -275,7 +282,10 @@ export const DataContextProvider = ({ children }) => {
         handleDeleteLast,
         history,
         handleDeleteHistory,
-        setLast
+        setLast,
+        handleDarkMode,
+        isDark,
+        setIsDark,
       }}
     >
       {children}
