@@ -3,13 +3,13 @@ import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 
 const Favs = () => {
-  const { favs, handleDeleteFavs } = useContext(DataContext);
+  const { favs, handleDeleteFavs, isDark } = useContext(DataContext);
   return (
-    <div className="h-fit font-rem">
-      {favs?.length !== 0 ? <div className="mt-10 mb-10 font-rem">
+    <div className={`h-fit p-10 font-rem ${isDark ? 'bg-slate-500' : ''}`}>
+      {favs?.length !== 0 ? <div className="font-rem">
         {favs?.map((fav, i) => {
           return (
-            <div key={i} className="flex xxs:capitalize xxs:font-semibold hover:bg-slate-200 flex-row text-indigo-800 items-center justify-evenly pb-4 pt-4 xxs:p-2 uppercase font-bold border-b border-slate-400">
+            <div key={i} className={`flex xxs:capitalize xxs:font-semibold flex-row ${isDark ? 'text-indigo-100' : 'text-indigo-800'} items-center justify-evenly pb-4 pt-4 xxs:p-2 uppercase font-bold border-b border-slate-400`}>
               <div>
                 <img src={fav.thumbnail} alt="" className="w-favs-i h-favs-i rounded-full xs:w-12 xs:h-12 xxxs:w-6 xxxs:h-6"/>
               </div>
@@ -28,7 +28,7 @@ const Favs = () => {
         })}
       </div> : <div className="flex flex-col items-center justify-start h-screen">
         
-          <div className="mt-12 text-md text-slate-500 font-bold uppercase xxxs:text-xs">No product found in your favourites</div>
+          <div className={`mt-12 text-md ${isDark ? 'text-slate-100' : 'text-slate-500'} font-bold uppercase xxxs:text-xs`}>No product found in your favourites</div>
         
         </div>}
     </div>

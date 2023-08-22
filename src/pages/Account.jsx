@@ -3,11 +3,11 @@ import DataContext from "../context/DataContext";
 import { Link } from "react-router-dom";
 
 const Account = () => {
-  const { currentUser, last, handleDeleteLast, history, handleDeleteHistory } =
+  const { currentUser, last, handleDeleteLast, history, handleDeleteHistory, isDark } =
     useContext(DataContext);
 
   return (
-    <div className="flex flex-row items-center gap-36 font-rem p-12 md:flex-col md:gap-4">
+    <div className={`flex flex-row ${isDark ? 'bg-slate-200' : ''} items-center gap-36 font-rem p-12 md:flex-col md:gap-4`}>
       <div className="flex flex-col justify-center items-center text-indigo-800">
         <div>
           <img

@@ -36,6 +36,7 @@ export default {
       backgroundImage: {
         'back': 'url("./style/asd.png")',
         'shoe': 'url("./style/shoe.png")',
+        'back-dark': 'url("./style/dark.png")',
       },
 
       width: {

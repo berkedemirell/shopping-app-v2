@@ -119,7 +119,7 @@ const Nav = () => {
             </button>
           )}
           {isAcc && (
-            <div className="flex flex-col items-start xs:text-sm gap-2 final:-left-24 final:top-10 absolute md:-left-8 top-14 left-24 bg-slate-800 p-4 rounded-lg z-10">
+            <div className={`flex flex-col items-start xs:text-sm gap-2 final:-left-24 final:top-10 absolute ${isDark ? 'bg-slate-600' : 'bg-slate-900'} md:-left-8 top-14 left-24  p-4 rounded-lg z-10`}>
               <Link
                 to="/products"
                 className="hover:opacity-70 transition-all duration-500 hidden md:block"
@@ -164,6 +164,12 @@ const Nav = () => {
           )}
           {currentUser?.length === 0 && (
             <>
+              <button
+                className="hover:opacity-70 transition-all xs:text-sm duration-500 md:hidden xxs:text-sm ssm:hidden"
+                onClick={handleDarkMode}
+              >
+                Dark Mode
+              </button>
               <Link
                 to="/login"
                 className="hover:opacity-70 transition-all xs:text-sm duration-500 xxs:text-sm ssm:hidden"
@@ -180,7 +186,7 @@ const Nav = () => {
           )}
           {currentUser?.length === 0 && <div className="relative hidden ssm:block">
             <button className="rotate-90" onClick={handleDropDown}>...</button>
-            {isDropDown && <div className="absolute z-10 -left-24 text-start rounded-lg top-8 p-4 bg-indigo-900 flex flex-col">
+            {isDropDown && <div className="absolute w-36 z-10 -left-32 text-start rounded-lg top-8 p-4 bg-indigo-900 flex flex-col">
               <Link
                 to="/products"
                 className="hover:opacity-70 transition-all duration-500 hidden md:block xs:text-sm"
@@ -188,6 +194,12 @@ const Nav = () => {
               >
                 Products
               </Link>
+              <button
+                className="hover:opacity-70 transition-all text-start xs:text-sm duration-500 xxs:text-sm"
+                onClick={handleDarkMode}
+              >
+                Dark Mode
+              </button>
               <Link
                 to="/login"
                 className="hover:opacity-70 transition-all xs:text-sm duration-500"

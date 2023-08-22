@@ -6,7 +6,7 @@ import Discount from "../components/Discount";
 import Progress from "../components/Progress";
 
 const Purchase = () => {
-  const { cart, handleDeleteCart, addToCart,setCart,isDiscounted,total,selectedCode } = useContext(DataContext);
+  const { cart, handleDeleteCart, addToCart,setCart,isDiscounted,total,selectedCode, isDark } = useContext(DataContext);
   const [error, setError] = useState('')
   const [isPaid, setIsPaid] = useState(false)
   const [inProgress, setInProgress] = useState(false)
@@ -96,7 +96,7 @@ const Purchase = () => {
   } 
 
   return (
-    <div className="font-mono">
+    <div className={`font-mono ${isDark ? 'bg-slate-300' : ''}`}>
     {!inProgress ? <div className="p-10 xxs:p-4 flex flex-row md:flex-col md:items-center items-start justif-center w-full gap-12 font-rem">
       {cart?.length !== 0 ? <div className="w-1/2 ml-4 md:w-full">
         {cart?.map((c, i) => {
