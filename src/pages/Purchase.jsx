@@ -30,7 +30,7 @@ const Purchase = () => {
     },
     {
       cardHolder: "Tom Bombadil",
-      cardNumber: "3131 1313 3131 3131",
+      cardNumber: "4567 5878 4567 4535",
       cvv: "133",
       month: "05",
       year: "26",
@@ -41,13 +41,6 @@ const Purchase = () => {
       cvv: "144",
       month: "02",
       year: "29",
-    },
-    {
-      cardHolder: "asd",
-      cardNumber: "1234",
-      cvv:"31",
-      month: "02",
-      year: "31",
     },
   ];
 
@@ -164,7 +157,7 @@ const Purchase = () => {
               name="cardHolder"
               id="name"
               className="w-cart xxs:w-cart2 h-8 xxs:text-sm  border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
-              placeholder="Name on the Card"
+              placeholder="e.g Berke Demirel"
               onChange={handleChange}
             />
           </div>
@@ -180,7 +173,7 @@ const Purchase = () => {
               name="cardNumber"
               id="card-number"
               className="w-cart h-8 xxs:w-cart2 xxs:text-sm  border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
-              placeholder="Card Number"
+              placeholder="e.g 1234123412341234"
               onChange={handleChange}
             />
           </div>
@@ -196,7 +189,7 @@ const Purchase = () => {
               name="cvv"
               id="cvv"
               className="w-cart h-8 border-2 xxs:text-sm  xxs:w-cart2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
-              placeholder="Cvv"
+              placeholder="e.g 123"
               onChange={handleChange}
             />
           </div>
@@ -214,7 +207,7 @@ const Purchase = () => {
                 id="month"
                 maxLength={2}
                 className="w-20 xxs:w-12 h-8 xxs:text-sm  border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
-                placeholder="MM"
+                placeholder="e.g 02"
                 onChange={handleChange}
               />
               <input
@@ -223,7 +216,7 @@ const Purchase = () => {
                 name="year"
                 maxLength={2}
                 className="w-20 xxs:w-12 xxs:text-sm h-8 border-2 border-indigo-900 rounded-lg p-1 font-bold text-indigo-900"
-                placeholder="YY"
+                placeholder="e.g 25"
                 onChange={handleChange}
               />
             </div>

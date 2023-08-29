@@ -10,12 +10,8 @@ export const codes = [
         rate: 0.50,
     },
     {
-        code: 'YARRAM',
-        rate: 0.33,
-    },
-    {
         code: 'WELCOME',
-        rate: 0.50,
+        rate: 0.33,
     }
 ]
 

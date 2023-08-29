@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Favs = () => {
   const { favs, handleDeleteFavs, isDark } = useContext(DataContext);
   return (
-    <div className={`h-fit p-10 font-rem ${isDark ? 'bg-slate-500' : ''}`}>
+    <div className={`${favs?.length > 3 ? 'h-fit' : 'h-screen'} p-10 font-rem ${isDark ? 'bg-slate-500' : ''}`}>
       {favs?.length !== 0 ? <div className="font-rem">
         {favs?.map((fav, i) => {
           return (

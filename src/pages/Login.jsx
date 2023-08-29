@@ -84,6 +84,7 @@ const Login = () => {
                 Register
               </Link>
             </p>
+            <p>username: <span className="font-bold">test</span>, password:<span className="font-bold">test</span> to test the application</p>
           </div>
           <div className="text-center text-xs uppercase text-red-800 font-bold">
             <p>{error}</p>
