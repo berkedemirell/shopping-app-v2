@@ -109,15 +109,16 @@ const Purchase = () => {
                     <Link to={`/product/${c?.id}`}>{c?.title}</Link>
                   </p>
                 </div>
+                <span className="text-lg font-bold text-green-900">x{c.quantity}</span>
                 <div className="w-20 text-center xs:w-10">
                   <p className="text-sm font-bold text-slate-800 xxs:text-xs xxs:w-10">
-                    ${c?.price}
+                    ${Number(c?.price)*Number(c.quantity)}
                   </p>
                 </div>
                 <div className="flex flex-row gap-4 xs:w-20">
                   <button
                     className="text-red-800 font-bold xxs:text-xs"
-                    id={i}
+                    id={c.id}
                     onClick={handleDeleteCart}
                   >
                     Delete

@@ -61,7 +61,9 @@ export const DataContextProvider = ({ children }) => {
       return [];
     }
   });
-  const total = cart?.map((p) => p.price)?.reduce((a, b) => a + b, 0);
+
+  const priceAmount = cart?.map((c) => Number(c.price) * Number(c.quantity))
+  const total = priceAmount?.reduce((a,b) => a+b, 0)
 
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
@@ -139,12 +141,22 @@ export const DataContextProvider = ({ children }) => {
   
   const addToCart = (e) => {
     e.preventDefault();
-    const selected = products.filter(
+    const selected = {...products.filter(
       (pro) => Number(e.target.id) === Number(pro.id)
-      )[0];
+      )[0], quantity: 1}
       if (currentUser?.length === 0) {
         alert("You have be logged in to add a product in your cart.");
-    } else {
+    } else if(cart.filter((pr) => Number(pr.id) === Number(e.target.id)).length !== 0){
+      const newState = cart.map((c) => {
+        if(Number(c.id) === Number(e.target.id)) {
+          return {...c, quantity: Number(c.quantity) + 1}
+        } else {
+          return c
+        }
+      })
+      setCart(newState)
+    } 
+    else {
       setCart([...cart, selected])
     }
   };
@@ -169,16 +181,27 @@ export const DataContextProvider = ({ children }) => {
 
   const handleDeleteCart = (e) => {
     e.preventDefault();
-    const newCartArray = cart.filter((c,i) => {
-      if(Number(i) === Number(e.target.id)) {
-        return false
-      } else {
-        return true
-      }
-    })
-
-    setCart(newCartArray)
+    if(Number(cart.filter((a) => Number(a.id) === Number(e.target.id))[0]?.quantity) > 1) {
+      const newState = cart.map((c) => {
+        if(Number(c.id) === Number(e.target.id)) {
+          return {...c, quantity: Number(c.quantity) - 1}
+        } else {
+          return c
+        }
+      })
+      setCart(newState)
+    } else {
+      const newCartArray = cart.filter((c) => {
+        if(Number(c.id) === Number(e.target.id)) {
+          return false
+        } else {
+          return true
+        }
+      })
+      setCart(newCartArray)
+    }
   }
+  
   
   const handleChange = (e) => {
     setCats(e.target.value);

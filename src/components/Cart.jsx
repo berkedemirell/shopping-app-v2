@@ -5,13 +5,13 @@ import EmptyCard from "./EmptyCard";
 /* eslint-disable react/prop-types */
 
 const Cart = (props) => {
-  const {cart, handleDeleteCart, addToCart, isDark } = useContext(DataContext);
-  const total = cart?.map(p => p?.price)?.reduce((a,b) => a+b,0)
+  const {cart, handleDeleteCart, addToCart, isDark,total } = useContext(DataContext);
 
   const closeDrops = () => {
     props.setIsCart(false)
     props.setIsAcc(false)
   }
+
   return (
     <div className={`absolute xl:w-cartl xl:text-lg xl:top-20 xl:-left-72 -left-44 border no-scrollbar xxs:h-carth2 h-carth overflow-auto top-10 ssm:w-cart2 z-10 border-slate-200 p-4 ssm:p-2 w-cart ${isDark ? 'bg-slate-700 text-slate-100' : 'bg-indigo-200 text-sky-800'} rounded-lg text-sm`}>
       {cart?.length !== 0 ? <div>
@@ -23,11 +23,12 @@ const Cart = (props) => {
                     <p className="w-title xl:w-64 ssm:text-xs"><Link to={`/product/${pro.id}`}>{pro.title}</Link></p>
                   </div>
                   <div className="flex flex-row gap-2 text-lg">
-                    <button id={i} className="text-2xl ssm:text-xl" onClick={handleDeleteCart}>-</button>
+                    <button id={pro.id} className="text-2xl ssm:text-xl" onClick={handleDeleteCart}>-</button>
                     <button id={pro.id} className="text-2xl ssm:text-xl" onClick={addToCart}>+</button>
+                    <p>x{pro.quantity}</p>
                   </div>
                   <div>
-                    <p className="w-delete ssm:text-xs">${pro?.price}</p>
+                    <p className="w-delete ssm:text-xs">${Number(pro?.price)*Number(pro.quantity)}</p>
                   </div>
                 </div>
               </div>
