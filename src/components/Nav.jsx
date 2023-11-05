@@ -33,6 +33,10 @@ const Nav = () => {
 
   const cond = isDark ? 'text-slate-50 bg-slate-800' : 'bg-gradient-to-r from-nav to-nav2 text-slate-200'
 
+
+  const cartLength = cart.map((d) => d.quantity).reduce((a,b) => a+b,0)
+  console.log(cartLength)
+
   return (
     <div className={`xxs:pb-4 xl:p-6 xxs:pt-4 flex flex-row ${cond} justify-between p-2 xs:p-1 items-center font-rem tracking-wider`}>
       <div className="flex flex-row items-center gap-2 pl-4">
@@ -93,7 +97,7 @@ const Nav = () => {
                 className="hover:opacity-70 xl:text-xl final:hidden xxs:text-xs transition-all duration-500 flex flex-row items-center gap-1 xs:text-sm"
                 onClick={handleCart}
               >
-                Cart({cart?.length}){" "}
+                Cart({cartLength}){" "}
                 <ion-icon
                   name="chevron-down-outline"
                   className="rotate-45"
@@ -132,7 +136,7 @@ const Nav = () => {
                 className="hover:opacity-70 transition-all duration-500 hidden final:block"
                 onClick={() => setIsAcc(false)}
               >
-                Cart({cart?.length})
+                Cart({cartLength})
               </Link>
               <Link
                 to="/account/favourites"
