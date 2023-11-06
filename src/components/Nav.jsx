@@ -35,7 +35,6 @@ const Nav = () => {
 
 
   const cartLength = cart.map((d) => d.quantity).reduce((a,b) => a+b,0)
-  console.log(cartLength)
 
   return (
     <div className={`xxs:pb-4 xl:p-6 xxs:pt-4 flex flex-row ${cond} justify-between p-2 xs:p-1 items-center font-rem tracking-wider`}>

@@ -109,7 +109,7 @@ const Purchase = () => {
                     <Link to={`/product/${c?.id}`}>{c?.title}</Link>
                   </p>
                 </div>
-                <span className="text-lg font-bold text-green-900">x{c.quantity}</span>
+                <span className="text-lg font-bold text-green-900 sm:text-sm">x{c.quantity}</span>
                 <div className="w-20 text-center xs:w-10">
                   <p className="text-sm font-bold text-slate-800 xxs:text-xs xxs:w-10">
                     ${Number(c?.price)*Number(c.quantity)}

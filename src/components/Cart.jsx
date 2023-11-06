@@ -22,10 +22,10 @@ const Cart = (props) => {
                   <div>
                     <p className="w-title xl:w-64 ssm:text-xs"><Link to={`/product/${pro.id}`}>{pro.title}</Link></p>
                   </div>
-                  <div className="flex flex-row gap-2 text-lg">
+                  <div className="flex flex-row gap-2 text-lg items-center">
                     <button id={pro.id} className="text-2xl ssm:text-xl" onClick={handleDeleteCart}>-</button>
                     <button id={pro.id} className="text-2xl ssm:text-xl" onClick={addToCart}>+</button>
-                    <p>x{pro.quantity}</p>
+                    <p className="ssm:text-xs font-bold">x{pro.quantity}</p>
                   </div>
                   <div>
                     <p className="w-delete ssm:text-xs">${Number(pro?.price)*Number(pro.quantity)}</p>
