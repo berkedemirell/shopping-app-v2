@@ -29,7 +29,7 @@ const All = () => {
     const posts = (sort && newArrayCte || sort2 && newArrayEtc || products).slice(indexOfFirstProduct, indexOfLastProduct);
 
   return (
-    <div className={`w-screen h-fit font-rem ${cond}`}>
+    <div className={`h-fit font-rem ${cond}`}>
       <div className="p-2 ml-8">
         <div className={`flex flex-row items-center gap-2 ${cond2} font-bold`}>
           <input type="checkbox" className="" id="cte" onChange={handleSort} disabled={sort2 ? true : false}/>

@@ -27,7 +27,7 @@ const Electronics = () => {
       setSort2((prev) => !prev)
     }
   return (
-    <div className={`w-screen h-fit font-rem ${cond}`}>
+    <div className={` h-fit font-rem ${cond}`}>
       <div className="p-2 ml-8">
         <div className={`flex flex-row items-center gap-2 font-bold ${cond2}`}>
           <input type="checkbox" className="" id="cte" onChange={handleSort} disabled={sort2 ? true : false}/>

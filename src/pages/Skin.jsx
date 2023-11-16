@@ -29,7 +29,7 @@ const Skin = () => {
         setSort(false)
       }
   return (
-    <div className={`w-screen ${cond} h-fit font-rem`}>
+    <div className={`${cond} h-fit font-rem`}>
       <div className="p-2 ml-8">
         <div className={`flex flex-row items-center gap-2  font-bold ${cond2}`}>
           <input type="checkbox" className="" id="cte" onChange={handleSort} disabled={sort2 ? true : false}/>

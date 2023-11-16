@@ -9,7 +9,7 @@ const Search = () => {
   const cond3 = isDark ? 'text-slate-50 bg-slate-700' : 'bg-card text-slate-900'
 
   return (
-    <div className={`w-screen h-fit font-rem ${cond}`}>
+    <div className={`h-fit font-rem ${cond}`}>
       <div><p className={`p-2 text-xl ${isDark ? 'text-slate-200' : 'text-indigo-900'} font-bold`}>{searchedArray?.length} results found.</p></div>
     <div className="grid grid-cols-6 gap-4 p-10 lg:grid-cols-4 md:flex md:flex-row md:flex-wrap">
       {searchedArray?.length === 0 ? <div className="text-center mt-4 font-bold h-screen">
