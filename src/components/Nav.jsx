@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
-import logo from "../style/logo.png";
 import { useContext, useState } from "react";
 import DataContext from "../context/DataContext";
 
@@ -39,14 +38,8 @@ const Nav = () => {
   return (
     <div className={`xxs:pb-4 xl:p-6 xxs:pt-4 flex flex-row ${cond} justify-between p-2 xs:p-1 items-center font-rem tracking-wider`}>
       <div className="flex flex-row items-center gap-2 pl-4">
-        <Link to="/">
-          <img
-            src={logo}
-            alt=""
-            width={75}
-            height={75}
-            className="rounded-full hover:scale-110 transition-all xl:w-24 duration-500 xs:h-14 xs:w-14 xxs:w-8 xxs:h-8"
-          />
+        <Link to="/" className="p-4">
+          Logo
         </Link>
         <p className="text-amber-300 lg:hidden">
           {currentUser?.length === 0
