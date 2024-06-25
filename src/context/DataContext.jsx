@@ -132,9 +132,9 @@ export const DataContextProvider = ({ children }) => {
           p.title
           .toLowerCase()
             .split(" ")
-            .concat(p.title.toLowerCase())
-            .concat(p.brand.toLowerCase())
-            .concat(p.category.toLowerCase())
+            .concat(p?.title?.toLowerCase())
+            .concat(p?.brand?.toLowerCase())
+            .concat(p?.category?.toLowerCase())
         ),
       };
   });
