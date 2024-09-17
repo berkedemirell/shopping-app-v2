@@ -11,47 +11,47 @@ export const DataContextProvider = ({ children }) => {
   const [cats, setCats] = useState("");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(false);
   const [last, setLast] = useState(() => {
-    const savedLasts = localStorage.getItem('last')
-    if(savedLasts) {
-      return JSON.parse(savedLasts)
+    const savedLasts = localStorage.getItem("last");
+    if (savedLasts) {
+      return JSON.parse(savedLasts);
     } else {
-      return []
+      return [];
     }
-  })
+  });
   const [productPerPage] = useState(12);
-  const [selectedCode, setSelectedCode] = useState({})
+  const [selectedCode, setSelectedCode] = useState({});
   const [isDiscounted, setIsDiscounted] = useState(false);
   const [favs, setFavs] = useState(() => {
-    const savedFavs = localStorage.getItem('favs');
-    if(savedFavs) {
-      return JSON.parse(savedFavs)
+    const savedFavs = localStorage.getItem("favs");
+    if (savedFavs) {
+      return JSON.parse(savedFavs);
     } else {
-      return []
+      return [];
     }
-  })
+  });
   const [history, setHistory] = useState(() => {
-    const savedHis = localStorage.getItem('history');
-    if(savedHis) {
-      return JSON.parse(savedHis)
+    const savedHis = localStorage.getItem("history");
+    if (savedHis) {
+      return JSON.parse(savedHis);
     } else {
-      return []
+      return [];
     }
-  })
+  });
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    if(savedCart) {
-      return JSON.parse(savedCart)
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      return JSON.parse(savedCart);
     } else {
-      return []
+      return [];
     }
-  })
+  });
 
   const handleDarkMode = (e) => {
     e.preventDefault();
-    setIsDark((prev) => !prev)
-  }
+    setIsDark((prev) => !prev);
+  };
 
   const [currentUser, setCurrentUser] = useState(() => {
     const user = localStorage.getItem("user");
@@ -62,8 +62,8 @@ export const DataContextProvider = ({ children }) => {
     }
   });
 
-  const priceAmount = cart?.map((c) => Number(c.price) * Number(c.quantity))
-  const total = priceAmount?.reduce((a,b) => a+b, 0)
+  const priceAmount = cart?.map((c) => Number(c.price) * Number(c.quantity));
+  const total = priceAmount?.reduce((a, b) => a + b, 0);
 
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
@@ -71,35 +71,35 @@ export const DataContextProvider = ({ children }) => {
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo({top: 0, behavior: 'smooth'})
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const previousPage = () => {
     if (currentPage !== 1) {
-       setCurrentPage(currentPage - 1);
-       window.scrollTo({top: 0, behavior: 'smooth'})
+      setCurrentPage(currentPage - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
- };
+  };
 
- const nextPage = () => {
-  if (currentPage !== Math.ceil(products.length / productPerPage)) {
-     setCurrentPage(currentPage + 1);
-     window.scrollTo({top: 0, behavior: 'smooth'})
-  }
+  const nextPage = () => {
+    if (currentPage !== Math.ceil(products.length / productPerPage)) {
+      setCurrentPage(currentPage + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const addToLasts = (e) => {
-    const selected = products.filter((pro) => Number(e.target.id) === Number(pro.id))[0]
-  
-    if(last.length < 3) {
-      setLast([...last, selected])
-    }else {
-      last.shift();
-      setLast([...last, selected])
-    }
-  }
+    const selected = products.filter(
+      (pro) => Number(e.target.id) === Number(pro.id)
+    )[0];
 
+    if (last.length < 3) {
+      setLast([...last, selected]);
+    } else {
+      last.shift();
+      setLast([...last, selected]);
+    }
+  };
 
   const addToFav = (e) => {
     e.preventDefault();
@@ -109,16 +109,13 @@ export const DataContextProvider = ({ children }) => {
     if (currentUser?.length === 0) {
       alert("You have be logged in to add a product in your favourites.");
     } else if (
-      favs
-        ?.map((ca) => Number(ca?.id))
-        .includes(Number(e.target.id))
+      favs?.map((ca) => Number(ca?.id)).includes(Number(e.target.id))
     ) {
       alert("You have already have this product in your favourites.");
     } else {
-      setFavs([...favs, selected])
+      setFavs([...favs, selected]);
     }
   };
-
 
   const newPro = products.map((pro) => pro);
 
@@ -130,123 +127,128 @@ export const DataContextProvider = ({ children }) => {
         .split(" ")
         .concat(
           p.title
-          .toLowerCase()
+            .toLowerCase()
             .split(" ")
             .concat(p?.title?.toLowerCase())
             .concat(p?.brand?.toLowerCase())
             .concat(p?.category?.toLowerCase())
         ),
-      };
+    };
   });
-  
+
   const addToCart = (e) => {
     e.preventDefault();
-    const selected = {...products.filter(
-      (pro) => Number(e.target.id) === Number(pro.id)
-      )[0], quantity: 1}
-      if (currentUser?.length === 0) {
-        alert("You have be logged in to add a product in your cart.");
-    } else if(cart.filter((pr) => Number(pr.id) === Number(e.target.id)).length !== 0){
+    const selected = {
+      ...products.filter((pro) => Number(e.target.id) === Number(pro.id))[0],
+      quantity: 1,
+    };
+    if (currentUser?.length === 0) {
+      alert("You have be logged in to add a product in your cart.");
+    } else if (
+      cart.filter((pr) => Number(pr.id) === Number(e.target.id)).length !== 0
+    ) {
       const newState = cart.map((c) => {
-        if(Number(c.id) === Number(e.target.id)) {
-          return {...c, quantity: Number(c.quantity) + 1}
+        if (Number(c.id) === Number(e.target.id)) {
+          return { ...c, quantity: Number(c.quantity) + 1 };
         } else {
-          return c
+          return c;
         }
-      })
-      setCart(newState)
-    } 
-    else {
-      setCart([...cart, selected])
+      });
+      setCart(newState);
+    } else {
+      setCart([...cart, selected]);
     }
   };
 
   const handleDeleteFavs = (e) => {
     e.preventDefault();
-    const newFavsArray = favs.filter((fav,i) => {
-      if(Number(i) === Number(e.target.id)) {
-        return false
+    const newFavsArray = favs.filter((fav, i) => {
+      if (Number(i) === Number(e.target.id)) {
+        return false;
       } else {
-        return true
+        return true;
       }
-    })
+    });
     setFavs(newFavsArray);
-  }
+  };
 
   const handleDeleteLast = (e) => {
     e.preventDefault();
-    const newArray = []
+    const newArray = [];
     setLast(newArray);
-  }
+  };
 
   const handleDeleteCart = (e) => {
     e.preventDefault();
-    if(Number(cart.filter((a) => Number(a.id) === Number(e.target.id))[0]?.quantity) > 1) {
+    if (
+      Number(
+        cart.filter((a) => Number(a.id) === Number(e.target.id))[0]?.quantity
+      ) > 1
+    ) {
       const newState = cart.map((c) => {
-        if(Number(c.id) === Number(e.target.id)) {
-          return {...c, quantity: Number(c.quantity) - 1}
+        if (Number(c.id) === Number(e.target.id)) {
+          return { ...c, quantity: Number(c.quantity) - 1 };
         } else {
-          return c
+          return c;
         }
-      })
-      setCart(newState)
+      });
+      setCart(newState);
     } else {
       const newCartArray = cart.filter((c) => {
-        if(Number(c.id) === Number(e.target.id)) {
-          return false
+        if (Number(c.id) === Number(e.target.id)) {
+          return false;
         } else {
-          return true
+          return true;
         }
-      })
-      setCart(newCartArray)
+      });
+      setCart(newCartArray);
     }
-  }
-  
-  
+  };
+
   const handleChange = (e) => {
     setCats(e.target.value);
   };
 
   const handleSubmitCat = () => {
     setSearch(cats);
-    if(history.length !== 10) {
-      setHistory([cats,...history])
+    if (history.length !== 10) {
+      setHistory([cats, ...history]);
     } else {
       history.pop();
-      setHistory([cats ,...history])
+      setHistory([cats, ...history]);
     }
   };
 
   const handleDeleteHistory = (e) => {
     e.preventDefault();
-    const newArray = history.filter((his,i) => {
-      if(Number(e.target.id) === Number(i)) {
-        return false
+    const newArray = history.filter((his, i) => {
+      if (Number(e.target.id) === Number(i)) {
+        return false;
       } else {
-        return true
+        return true;
       }
-    })
+    });
 
     setHistory(newArray);
-  }
+  };
 
   const searchedArray = modified.filter((m) => {
     const letters = search?.toLowerCase().split(" ");
     const modifiedLetter = letters.filter((letter) => {
-      if(letter === ' ') {
-        return false
+      if (letter === " ") {
+        return false;
       } else {
-        return true
+        return true;
       }
-    })
+    });
     return modifiedLetter?.some((val) => m.ca.includes(val));
   });
-  
+
   useEffect(() => {
-    localStorage.setItem('favs', JSON.stringify(favs))
-    localStorage.setItem('cart', JSON.stringify(cart))
-    localStorage.setItem('last', JSON.stringify(last))
-    localStorage.setItem('history', JSON.stringify(history))
+    localStorage.setItem("favs", JSON.stringify(favs));
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("last", JSON.stringify(last));
+    localStorage.setItem("history", JSON.stringify(history));
     const getProducts = async () => {
       const res = await axios.get("https://dummyjson.com/products");
       setProducts(res.data.products);
@@ -254,18 +256,18 @@ export const DataContextProvider = ({ children }) => {
     getProducts();
   }, [favs, cart, last, history]);
 
-  const laptops = products.filter((pro) => pro.category === "laptops");
-  const phones = products.filter((pro) => pro.category === "smartphones");
+  console.log(products)
+
+  // const laptops = products.filter((pro) => pro.category === "laptops");
+  // const phones = products.filter((pro) => pro.category === "smartphones");
   const frag = products.filter((pro) => pro.category === "fragrances");
-  const skin = products.filter((pro) => pro.category === "skincare");
+  const skin = products.filter((pro) => pro.category === "beauty");
   const groceries = products.filter((pro) => pro.category === "groceries");
-  const deco = products.filter((pro) => pro.category === "home-decoration");
+  const deco = products.filter((pro) => pro.category === "furniture");
 
   return (
     <DataContext.Provider
       value={{
-        laptops,
-        phones,
         frag,
         skin,
         groceries,

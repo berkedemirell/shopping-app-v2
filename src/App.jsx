@@ -7,8 +7,6 @@ const Main = React.lazy(() => import ('./pages/Main.jsx'))
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
-import Shoes from "./pages/Shoes";
-import Electronics from "./pages/Electronics";
 import Detail from "./pages/Detail";
 import Fragrance from "./pages/Fragrance";
 import Skin from "./pages/Skin";
@@ -49,14 +47,6 @@ function App() {
         {
           path:"/products",
           element:<Products/>
-        },
-        {
-          path:"/products/shoes",
-          element:<Shoes/>
-        },
-        {
-          path:"/products/electronics",
-          element:<Electronics/>
         },
         {
           path:"/products/fragrances",

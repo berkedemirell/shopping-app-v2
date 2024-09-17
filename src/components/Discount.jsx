@@ -7,7 +7,7 @@ export const Discount = () => {
 
   const [code, setCode] = useState("");
   const handleChange = (e) => {
-    setCode(e.target.value);
+    setCode(e.target.value.toUpperCase());
   };
 
   // const sselectedCode = () => {
